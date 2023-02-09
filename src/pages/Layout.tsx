@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
 import { styled } from '@mui/material/styles';
-import CommodityTable from "./CommodityTable"
+import CommodityTable from "./CodeTable"
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
@@ -16,6 +16,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import DescriptionTable from "./DescriptionTable";
 
 // h-screen px-4 pt-8 pb-4 bg-light flex justify-between flex-col w=80
 
@@ -149,7 +150,7 @@ const Layout = () => {
    <br></br>
     <CommodityTable/>
     <br></br>
-    <CommodityTable/>
+    <DescriptionTable/>
   
    
       </div>

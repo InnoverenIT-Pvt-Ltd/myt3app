@@ -11,18 +11,14 @@ datasource db {
 }
 model Code {
     id            String    @id @default(cuid())
+    codename      String 
     name          String?
     active        Boolean  
-    
-   
 }
-
 model Description {
     
     descriptionid            String    @id @default(cuid())
     descriptionName          String?
     active        Boolean  
     codeId        String?
-    
-   
 }
