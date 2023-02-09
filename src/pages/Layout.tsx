@@ -10,6 +10,13 @@ import CommodityTable from "./CommodityTable"
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 // h-screen px-4 pt-8 pb-4 bg-light flex justify-between flex-col w=80
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -32,44 +39,116 @@ const style = {
   };
 
 const Layout = () => {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  const [open, setOpen] = React.useState(false);
+  const [openDesc, setOpenDesc] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleDescClickOpen = () => {
+    setOpenDesc(true);
+  };
+
+  const handleDescClose = () => {
+    setOpenDesc(false);
+  };
   return (
-    <div className="h-screen flex flex-row justify-start">
+    // <div className="h-screen flex flex-row justify-start">
+    <div 
+    style={{
+        display:"flex",
+        flexDirection:"row",
+        justifyContent:"start",
+        height:"100vh"
+    }}
+    >
       <Sidebar/>
-      <div className=" flex-1 p-4  border border-dashed">
+      {/* <div className=" flex-1 p-4  border border-dashed"> */}
+      <div
+      style={{
+        width:"90em"
+      }}
+      >
      <div>
       <Stack direction="row" spacing={2}>
      <div>
       <Button 
       variant="outlined" 
-      onClick={handleOpen}
+      onClick={handleClickOpen}
       >
         + Code
       </Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add Commodity Code</DialogTitle>
+        <DialogContent>
+          {/* <DialogContentText>
+            To subscribe to this website, please enter your email address here. We
+            will send updates occasionally.
+          </DialogContentText> */}
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Code"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Add</Button>
+        </DialogActions>
+      </Dialog>
       </div>
-      <Button variant="outlined" >
+      <Button 
+      variant="outlined"
+      onClick={handleDescClickOpen}
+       >
         + Description
       </Button>
+      <Dialog open={openDesc} onClose={handleDescClose}>
+        <DialogTitle>Description</DialogTitle>
+        <DialogContent>
+          {/* <DialogContentText>
+            To subscribe to this website, please enter your email address here. We
+            will send updates occasionally.
+          </DialogContentText> */}
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Description"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+         
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDescClose}>Cancel</Button>
+          <Button onClick={handleDescClose}>Add</Button>
+        </DialogActions>
+      </Dialog>
     </Stack>
     </div>
    <br></br>
+    <CommodityTable/>
+    <br></br>
     <CommodityTable/>
   
    

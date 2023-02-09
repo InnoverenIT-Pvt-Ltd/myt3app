@@ -64,3 +64,22 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+
+model Code {
+    id            String    @id @default(cuid())
+    name          String?
+    active        boolean  
+    
+   
+}
+
+model Description {
+    
+    descriptionid            String    @id @default(cuid())
+    descriptionName          String?
+    active        boolean  
+    codeId        string?
+    
+   
+}
