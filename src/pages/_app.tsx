@@ -18,3 +18,12 @@ const MyApp: AppType<{ session: Session | null }> = ({
 };
 
 export default api.withTRPC(MyApp);
+
+// import type { AppType } from 'next/app';
+// import { trpc } from '../utils/trpc';
+
+// const MyApp: AppType = ({ Component, pageProps }) => {
+//   return <Component {...pageProps} />;
+// };
+
+// export default trpc.withTRPC(MyApp);
